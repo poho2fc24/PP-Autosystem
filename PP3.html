@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PP Auto-system | Premium Smart Solutions</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark: #0f0f0f;
+            --light: #f8f9fa;
+            --gray: #1a1a1a;
+            --heading-font: 'Montserrat', sans-serif;
+            --body-font: 'Inter', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--body-font);
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: rgba(15, 15, 15, 0.98);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-family: var(--heading-font);
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            position: relative;
+            margin-left: 10px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            padding: 10px 15px;
+            font-size: 0.85rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Dropdown Menu */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--gray);
+            min-width: 220px;
+            box-shadow: 0px 15px 30px rgba(0,0,0,0.5);
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 10px 0;
+        }
+
+        .dropdown-content a {
+            text-transform: none;
+            display: block;
+            padding: 12px 20px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-btn {
+            border: 1px solid var(--gold);
+            padding: 8px 20px !important;
+            margin-left: 20px;
+            border-radius: 2px;
+        }
+
+        .nav-btn:hover { background: var(--gold); color: var(--dark) !important; }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1558002038-1055907df827?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--heading-font);
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            margin-bottom: 20px;
+            font-weight: 800;
+            background: linear-gradient(to right, #fff, var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p { font-size: 1.1rem; color: #ccc; margin-bottom: 30px; max-width: 700px;}
+
+        .btn {
+            font-family: var(--heading-font);
+            padding: 18px 45px;
+            background: var(--gold);
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.4s;
+        }
+
+        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3); }
+
+        /* --- Services --- */
+        .services {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .card {
+            background: var(--gray);
+            padding: 50px 30px;
+            text-align: center;
+            transition: 0.4s;
+            border: 1px solid #222;
+        }
+
+        .card:hover { border-color: var(--gold); transform: translateY(-10px); }
+        .card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 25px; }
+
+        /* --- Our Story Section --- */
+        .about-section {
+            padding: 120px 10%;
+            background-color: #0a0a0a;
+            display: flex;
+            justify-content: center;
+        }
+
+        .about-container { max-width: 850px; text-align: center; }
+
+        .subtitle {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin: 30px 0;
+            font-weight: 300;
+        }
+
+        .story-text p {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin-bottom: 25px;
+            line-height: 2;
+        }
+
+        /* --- Contact Section --- */
+        .contact-section {
+            padding: 100px 10%;
+            text-align: center;
+        }
+
+        .contact-grid {
+            margin-top: 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .contact-info i { color: var(--gold); font-size: 1.5rem; margin-bottom: 10px; }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #555;
+            border-top: 1px solid #222;
+            text-transform: uppercase;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">PP Auto-system</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li class="dropdown">
+                <a href="#services">Services <i class="fas fa-chevron-down"></i></a>
+                <div class="dropdown-content">
+                    <a href="#services">Auto Doors & Gates</a>
+                    <a href="#services">Smart Home Systems</a>
+                    <a href="#services">Solar Solutions</a>
+                </div>
+            </li>
+            <li><a href="#about">Our Story</a></li>
+            <li><a href="#contact" class="nav-btn">Inquiry</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Automating Your Future</h1>
+        <p>Premium Electric Gates, Intelligent Smart Homes, and Sustainable Solar Solutions for Modern Living.</p>
+        <a href="#about" class="btn">Discover Our Story</a>
+    </section>
+
+    <section id="services" class="services">
+        <div class="card">
+            <i class="fas fa-door-open"></i>
+            <h3>Auto Doors & Gates</h3>
+            <p>From residential elegance to industrial-grade security systems.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-home"></i>
+            <h3>Smart Home</h3>
+            <p>Innovative automation to make your lifestyle seamless and secure.</p>
+        </div>
+        <div class="card">
+            <i class="fas fa-solar-panel"></i>
+            <h3>Solar Energy</h3>
+            <p>Harnessing sustainable energy to power your home and your future.</p>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <span class="subtitle">Heritage & Innovation</span>
+            <h2>A Legacy in the Making</h2>
+            <p class="quote">"Precision in every system, passion in every partnership."</p>
+            <div class="story-text">
+                <p>
+                    <strong>PP Auto-system</strong> was born from a fusion of heritage and new beginnings.
+                    While our roots are firmly planted in years of industry expertise—passed down through
+                    a father’s mentorship—our vision is focused strictly on the future.
+                </p>
+                <p>
+                    Founded by <strong>Phoo</strong> and <strong>Praew</strong>, "PP" represents more than
+                    just our names; it represents a commitment to building a life and a legacy together.
+                    We believe that a home’s entrance is the threshold of security and comfort.
+                </p>
+                <p>
+                    Starting a new life together, we bring a personal touch to every project,
+                    ensuring that the technology we install today serves your family for a lifetime.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <span class="subtitle">Connect With Us</span>
+        <h2>Start Your Project</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <i class="fas fa-envelope"></i>
+                <p>inthatwork@gmail.com</p>
+            </div>
+            <div class="contact-info">
+                <i class="fas fa-phone"></i>
+                <p>+66 63 240 1224</p>
+            </div>
+            <div class="contact-info">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>Bangkok, Thailand</p>
+            </div>
+        </div>
+        <br><br>
+        <a href="mailto:contact@ppautosystem.com" class="btn">Send a Message</a>
+    </section>
+
+    <footer>
+        <p>&copy; EST.2026. BY PHOO & PRAEW.</p>
+    </footer>
+
+</body>
+</html>
